@@ -7,6 +7,9 @@ Author: person("Ricardo", "Cunha", email="cunha@iuta.de", role=c("cre", "aut"),
 Maintainer: <cunha@iuta.de>
 Description: Package to hold supporting data for package streamFind..
 License: GPL (>= 3)
+Depends: R (>= 4.2.0)
+Imports: 
+    data.table
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
