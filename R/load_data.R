@@ -31,17 +31,37 @@ msFilesDescription <- function() {
 
   df_files_desc <- data.frame(
     N. = seq_len(length(files)),
-    file_type = rep("MS", 30),
+    file_type = rep("MS", 32),
     file_name = basename(files),
-    device = c(rep("Agilent Q-TOF", 27), rep("Schimadzu Q-Trap", 1),
-               rep("Sciex Q-Trap", 2)),
-    data_type = c(rep("centroid", 6), rep("profile", 3), rep("centroid", 18), rep("profile", 3)),
-    ac_mode = c(rep("MS/MS", 27), rep("MRM", 3)),
-    polarity = c(rep("positive", 9),
-                 rep("negative", 3), rep("positive",3),
-                 rep("negative", 3), rep("positive",3),
-                 rep("negative", 3), rep("positive",3),
-                 rep("negative", 1), rep("positive", 2)),
+    device = c(
+      rep("Agilent Q-TOF", 27),
+      rep("Schimadzu Q-Trap", 1),
+      rep("Sciex Q-Trap", 2),
+      rep("Thermo Orbitrap", 2)
+    ),
+    data_type = c(
+      rep("centroid", 6),
+      rep("profile", 3),
+      rep("centroid", 18),
+      rep("profile", 3),
+      rep("profile", 2)
+    ),
+    ac_mode = c(
+      rep("MS/MS", 27),
+      rep("MRM", 3),
+      rep("MS", 2)),
+    polarity = c(
+      rep("positive", 9),
+      rep("negative", 3),
+      rep("positive",3),
+      rep("negative", 3),
+      rep("positive",3),
+      rep("negative", 3),
+      rep("positive",3),
+      rep("negative", 1),
+      rep("positive", 2),
+      rep("positive", 2)
+      ),
     description = c(
       rep("Basic centroided MS data as mzML spiked with chemical
         and internal standards (CS and IS, respectively).", 3),
@@ -55,7 +75,11 @@ msFilesDescription <- function() {
       rep("MRM acquisition of estrogenic compounds.", 1),
       rep("MRM acquisition of a nitrosamine mixture.", 1),
       rep("MRM acquisition of chemical and internal standards, as in the
-          hrms files", 1)
+          hrms files", 1),
+      rep("Trimed MS1 only orbitrap files from UDE
+          in profile mode and format mzML", 1),
+      rep("Trimed MS1 only orbitrap files from UDE
+          in profile mode and format mzXML", 1)
     )
   )
 
