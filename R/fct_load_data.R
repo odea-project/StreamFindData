@@ -101,7 +101,7 @@ get_all_file_descriptions <- function() {
 #'
 get_tof_spiked_chemicals <- function() {
   r_path <- system.file(package = "StreamFindData", dir = "extdata")
-  db <- paste0(r_path, "/spiked_chemicals_hrms.csv")
+  db <- paste0(r_path, "/tof_spiked_chemicals.csv")
   db <- fread(db)
   db$ionization <- "positive"
   db[, `:=`("mz_pos" = mass + 1.0073, "mz_neg" = mass - 1.0073 )]
@@ -127,7 +127,7 @@ get_tof_spiked_chemicals <- function() {
 #'
 get_ms_spiked_estrogens <- function() {
   r_path <- system.file(package = "StreamFindData", dir = "extdata")
-  db <- paste0(r_path, "/spiked_estrogens.csv")
+  db <- paste0(r_path, "/ms_spiked_estrogens.csv")
   db <- fread(db)
   db$ionization <- "negative"
   db$in_file <- "28"
