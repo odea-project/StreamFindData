@@ -1,4 +1,4 @@
-Package: streamFindData
+Package: StreamFindData
 Type: Package
 Title: Package to hold supporting data for package streamFind.
 Version: 0.1.0

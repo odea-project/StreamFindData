@@ -1,33 +1,33 @@
 
-#' msFilePaths
+#' get_all_file_paths
 #'
 #' @description Gets the full paths of ".mzML" and ".mzXML" files in the
-#' \pkg{streamFindData} package.
+#' \pkg{StreamFindData} package.
 #'
 #' @return A character vector with the full paths of MS files.
 #'
 #' @export
 #'
-msFilePaths <- function() {
-  r_path <- system.file(package = "streamFindData", dir = "extdata")
+get_all_file_paths <- function() {
+  r_path <- system.file(package = "StreamFindData", dir = "extdata")
   files <- list.files(r_path, pattern = ".mzML|.mzXML", full.names = TRUE)
   return(files)
 }
 
 
-#' msFilesDescription
+#' get_all_file_descriptions
 #'
 #' @description A table with a description of the ".mzML" and ".mzXML" files
-#' in the \pkg{streamFindData} package.
+#' in the \pkg{StreamFindData} package.
 #'
 #' @return A \linkS4class{data.table} with details for each ".mzML" and
 #' ".mzXML" file.
 #'
 #' @export
 #'
-msFilesDescription <- function() {
+get_all_file_descriptions <- function() {
 
-  files <- msFilePaths()
+  files <- get_all_file_paths()
 
   df_files_desc <- data.frame(
     N. = seq_len(length(files)),
@@ -88,7 +88,7 @@ msFilesDescription <- function() {
 
 
 
-#' msSpikedChemicals
+#' get_tof_spiked_chemicals
 #'
 #' @description List of chemicals spiked to ".mzML" and ".mzXML" files.
 #'
@@ -99,8 +99,8 @@ msFilesDescription <- function() {
 #'
 #' @export
 #'
-msSpikedChemicals <- function() {
-  r_path <- system.file(package = "streamFindData", dir = "extdata")
+get_tof_spiked_chemicals <- function() {
+  r_path <- system.file(package = "StreamFindData", dir = "extdata")
   db <- paste0(r_path, "/spiked_chemicals_hrms.csv")
   db <- fread(db)
   db$ionization <- "positive"
@@ -114,7 +114,7 @@ msSpikedChemicals <- function() {
 
 
 
-#' msSpikedEstrogens
+#' get_ms_spiked_estrogens
 #'
 #' @description List of estrogens spiked to ".mzML" files in MRM mode.
 #'
@@ -125,8 +125,8 @@ msSpikedChemicals <- function() {
 #'
 #' @export
 #'
-msSpikedEstrogens <- function() {
-  r_path <- system.file(package = "streamFindData", dir = "extdata")
+get_ms_spiked_estrogens <- function() {
+  r_path <- system.file(package = "StreamFindData", dir = "extdata")
   db <- paste0(r_path, "/spiked_estrogens.csv")
   db <- fread(db)
   db$ionization <- "negative"
