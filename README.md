@@ -1,6 +1,6 @@
 # StreamFindData
 R package with supporting data and other assets for the R package 
-[streamFind](https://github.com/odea-project/streamFind).
+[StreamFind](https://github.com/odea-project/StreamFind).
 
 <img src="inst/extdata/logo_group.png" width="100%" style="display: block; margin: auto;" />
 
