@@ -5,18 +5,11 @@
 \title{get_ms_file_paths}
 \usage{
 get_ms_file_paths()
-
-get_ms_file_paths()
 }
 \value{
 A character vector with the full paths of MS files.
-
-A character vector with the full paths of Raman files.
 }
 \description{
 Gets the full paths of ".mzML" and ".mzXML" files in the
-\pkg{StreamFindData} package.
-
-Gets the full paths of ".asc" Raman files in the
 \pkg{StreamFindData} package.
 }

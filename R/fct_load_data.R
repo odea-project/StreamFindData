@@ -144,7 +144,7 @@ get_ms_mrm_spiked_estrogens <- function() {
 #'
 #' @export
 #'
-get_ms_file_paths <- function() {
+get_raman_file_paths <- function() {
   r_path <- system.file(package = "StreamFindData", dir = "extdata")
   files <- list.files(r_path, pattern = ".asc", full.names = TRUE)
   return(files)
