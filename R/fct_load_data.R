@@ -1,5 +1,5 @@
 
-#' get_all_file_paths
+#' get_ms_file_paths
 #'
 #' @description Gets the full paths of ".mzML" and ".mzXML" files in the
 #' \pkg{StreamFindData} package.
@@ -8,14 +8,14 @@
 #'
 #' @export
 #'
-get_all_file_paths <- function() {
+get_ms_file_paths <- function() {
   r_path <- system.file(package = "StreamFindData", dir = "extdata")
   files <- list.files(r_path, pattern = ".mzML|.mzXML", full.names = TRUE)
   return(files)
 }
 
 
-#' get_all_file_descriptions
+#' get_ms_file_descriptions
 #'
 #' @description A table with a description of the ".mzML" and ".mzXML" files
 #' in the \pkg{StreamFindData} package.
@@ -25,9 +25,9 @@ get_all_file_paths <- function() {
 #'
 #' @export
 #'
-get_all_file_descriptions <- function() {
+get_ms_file_descriptions <- function() {
 
-  files <- get_all_file_paths()
+  files <- get_ms_file_paths()
 
   df_files_desc <- data.frame(
     N. = seq_len(length(files)),
@@ -88,18 +88,18 @@ get_all_file_descriptions <- function() {
 
 
 
-#' get_tof_spiked_chemicals
+#' get_ms_tof_spiked_chemicals
 #'
-#' @description List of chemicals spiked to ".mzML" and ".mzXML" files.
+#' @description List of chemicals spiked to TOF ".mzML" and ".mzXML" files.
 #'
 #' @return A \linkS4class{data.table} with the list of chemicals spiked in
-#' samples corresponding to the ".mzML" and ".mzXML" files.
+#' samples corresponding to the TOF ".mzML" and ".mzXML" files.
 #'
 #' @importFrom data.table data.table fread setnames copy
 #'
 #' @export
 #'
-get_tof_spiked_chemicals <- function() {
+get_ms_tof_spiked_chemicals <- function() {
   r_path <- system.file(package = "StreamFindData", dir = "extdata")
   db <- paste0(r_path, "/tof_spiked_chemicals.csv")
   db <- fread(db)
@@ -114,7 +114,7 @@ get_tof_spiked_chemicals <- function() {
 
 
 
-#' get_ms_spiked_estrogens
+#' get_ms_mrm_spiked_estrogens
 #'
 #' @description List of estrogens spiked to ".mzML" files in MRM mode.
 #'
@@ -125,7 +125,7 @@ get_tof_spiked_chemicals <- function() {
 #'
 #' @export
 #'
-get_ms_spiked_estrogens <- function() {
+get_ms_mrm_spiked_estrogens <- function() {
   r_path <- system.file(package = "StreamFindData", dir = "extdata")
   db <- paste0(r_path, "/ms_spiked_estrogens.csv")
   db <- fread(db)
@@ -133,4 +133,19 @@ get_ms_spiked_estrogens <- function() {
   db$in_file <- "28"
 
   return(db)
+}
+
+#' get_raman_file_paths
+#'
+#' @description Gets the full paths of ".asc" Raman files in the
+#' \pkg{StreamFindData} package.
+#'
+#' @return A character vector with the full paths of Raman files.
+#'
+#' @export
+#'
+get_ms_file_paths <- function() {
+  r_path <- system.file(package = "StreamFindData", dir = "extdata")
+  files <- list.files(r_path, pattern = ".asc", full.names = TRUE)
+  return(files)
 }
