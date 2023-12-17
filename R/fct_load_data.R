@@ -104,11 +104,12 @@ get_ms_tof_spiked_chemicals <- function() {
   db <- paste0(r_path, "/tof_spiked_chemicals.csv")
   db <- fread(db)
   db$ionization <- "positive"
-  db[, `:=`("mz_pos" = mass + 1.0073, "mz_neg" = mass - 1.0073 )]
-  db[grepl("neg", db$comment), ionization := "both"]
-  db[tag %in% "MIX1", tag := "S"]
-  db[, in_file := "1-6"]
-  db[tag %in% "IS", in_file := "1-27"][]
+  db$mz_pos <- db$mass + 1.0073
+  db$mz_neg <- db$mass - 1.0073
+  db$ionization[grepl("neg", db$comment)] <- "both"
+  db$tag[db$tag %in% "MIX1"] <- "S"
+  db$in_file <- "1-6"
+  db$in_file[db$tag %in% "IS"] <- "1-27"
   return(db)
 }
 
