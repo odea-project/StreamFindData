@@ -115,6 +115,34 @@ get_ms_tof_spiked_chemicals <- function() {
 
 
 
+#' get_ms_tof_spiked_chemicals_with_ms2
+#'
+#' @description List of chemicals spiked to TOF ".mzML" and ".mzXML" files
+#' including fragmentation pattern acquired with DDA.
+#'
+#' @return A \linkS4class{data.table} with the list of chemicals spiked in
+#' samples corresponding to the TOF ".mzML" and ".mzXML" files.
+#'
+#' @importFrom data.table data.table fread setnames copy
+#'
+#' @export
+#'
+get_ms_tof_spiked_chemicals_with_ms2 <- function() {
+  r_path <- system.file(package = "StreamFindData", dir = "extdata")
+  db <- paste0(r_path, "/tof_spiked_chemicals_ms2.csv")
+  db <- fread(db)
+  db$ionization <- "positive"
+  db$mz_pos <- db$mass + 1.0073
+  db$mz_neg <- db$mass - 1.0073
+  db$ionization[grepl("neg", db$comment)] <- "both"
+  db$tag[db$tag %in% "MIX1"] <- "S"
+  db$in_file <- "1-6"
+  db$in_file[db$tag %in% "IS"] <- "1-27"
+  return(db)
+}
+
+
+
 #' get_ms_mrm_spiked_estrogens
 #'
 #' @description List of estrogens spiked to ".mzML" files in MRM mode.
